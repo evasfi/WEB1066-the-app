@@ -6,11 +6,6 @@ os: linux
 dist: trusty
 jdk: oraclejdk8
 
-env:
-  - COVERAGE=0.5
-  - TARGET_UI=ui
-  - TARGET_CART=service/cart
-
 stages:
   - targets
 

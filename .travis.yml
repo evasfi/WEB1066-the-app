@@ -6,8 +6,6 @@ os: linux
 dist: trusty
 jdk: oraclejdk8
 
-env:
-        - COVERAGRÎ
 
 stages:
   - targets
@@ -15,7 +13,8 @@ stages:
 jobs:
         include:
                 - stage: targets
-                  name: "UI"
+                  name: "UI JDK8"
+                  jdk: oraclejdk8
                   install: skip
                   script:
                         - COVERAGE=0.5 ./gradlew -p ./monolithic/ui check
@@ -28,7 +27,8 @@ jobs:
                        fi;
 
                 - stage: targets
-                  name: "CART"
+                  name: "CART JDK8"
+                  jdk: oraclejdk8
                   install: skip
                   script:
                         - COVERAGE=0.5 ./gradlew -p ./monolithic/service/cart check
@@ -41,7 +41,8 @@ jobs:
                        fi;
 
                 - stage: targets
-                  name: "USER"
+                  name: "USER JDK8"
+                  jdk: oraclejdk8
                   install: skip
                   script:
                         - COVERAGE=0.5 ./gradlew -p ./monolithic/service/user check
@@ -54,7 +55,8 @@ jobs:
                        fi;
 
                 - stage: targets
-                  name: "ORDER"
+                  name: "ORDER JDK8"
+                  jdk: oraclejdk8
                   install: skip
                   script:
                         - COVERAGE=0.25 ./gradlew -p ./monolithic/repository/order check
@@ -67,7 +69,8 @@ jobs:
                        fi;
 
                 - stage: targets
-                  name: "REPO-CART"
+                  name: "REPO-CART JDK8"
+                  jdk: oraclejdk8
                   install: skip
                   script:
                         - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/cart check
@@ -80,7 +83,8 @@ jobs:
                        fi;
 
                 - stage: targets
-                  name: "PRODUCT-USER"
+                  name: "PRODUCT-USER JDK8"
+                  jdk: oraclejdk8
                   install: skip
                   script:
                         - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/product check
@@ -93,7 +97,107 @@ jobs:
                        fi;
 
                 - stage: targets
-                  name: "REPO-USER"
+                  name: "REPO-USER JDK8"
+                  jdk: oraclejdk8
+                  install: skip
+                  script:
+                        - COVERAGE=0.25 ./gradlew -p ./monolithic/repository/user check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.25"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+
+                - stage: targets
+                  name: "UI JD9"
+                  jdk: oraclejdk9
+                  install: skip
+                  script:
+                        - COVERAGE=0.5 ./gradlew -p ./monolithic/ui check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.5"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+                - stage: targets
+                  name: "CART JDK9"
+                  jdk: oraclejdk9
+                  install: skip
+                  script:
+                        - COVERAGE=0.5 ./gradlew -p ./monolithic/service/cart check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.5"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+                - stage: targets
+                  name: "USER JDK9"
+                  jdk: oraclejdk9
+                  install: skip
+                  script:
+                        - COVERAGE=0.5 ./gradlew -p ./monolithic/service/user check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.5"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+                - stage: targets
+                  name: "ORDER JDK9"
+                  jdk: oraclejdk9
+                  install: skip
+                  script:
+                        - COVERAGE=0.25 ./gradlew -p ./monolithic/repository/order check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.25"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+                - stage: targets
+                  name: "REPO-CART JDK9"
+                  jdk: oraclejdk9
+                  install: skip
+                  script:
+                        - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/cart check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.5"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+                - stage: targets
+                  name: "PRODUCT-USER JDk9"
+                  jdk: oraclejdk9
+                  install: skip
+                  script:
+                        - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/product check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.5"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+                - stage: targets
+                  name: "REPO-USER JDK9"
+                  jdk: oraclejdk9
                   install: skip
                   script:
                         - COVERAGE=0.25 ./gradlew -p ./monolithic/repository/user check

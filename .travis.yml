@@ -11,12 +11,15 @@ env:
 
 script:
   - ./gradlew clean jar
-  - ./gradlew test
-  - ./gradlew jacocoTestReport
-  - /usr/bin/find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}'
-  - COVERAGE=0.30 ./gradlew test jacocoTestCoverageVerification
-    #  - echo 'testing coming soon'
-    #- echo 'Using pull request rather than push from commandline!'
+  - COVERAGE=0.5 ./gradlew -p ./monolithic/ui check
+  - COVERAGE=0.5 ./gradlew -p ./monolithic/service/cart check
+  - COVERAGE=0.5 ./gradlew -p ./monolithic/service/user check
+
+
+  - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/order check
+  - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/cart check
+  - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/product check
+  - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/user check
 
 after_success:
   - set -x -v;

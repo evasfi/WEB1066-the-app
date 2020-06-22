@@ -9,4 +9,4 @@ jdk: oraclejdk8
 script:
   - ./gradlew clean jar
   - echo 'testing coming soon'
-  - echo 'Using pull request rather than push from commandline! "
+  - echo 'Using pull request rather than push from commandline!'

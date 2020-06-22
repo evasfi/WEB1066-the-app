@@ -8,6 +8,11 @@ jdk: oraclejdk8
 
 env:
   - COVERAGE=0.5
+  - TARGET_UI=ui
+  - TARGET_CART=service/cart
+
+stages:
+  - targets
 
 script:
   - ./gradlew clean jar
@@ -21,11 +26,97 @@ script:
   - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/product check
   - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/user check
 
-after_success:
-  - set -x -v;
-    set  -e;
-    if [ "${COVERAGE}" = 0.30 ]; then
-        echo 'WIP'
-    else
-        echo 'Ignore'
-    fi
+jobs:
+        include:
+                - stage: targets
+                  name: "UI"
+                  install: skip
+                  script:
+                        - COVERAGE=0.5 ./gradlew -p ./monolithic/ui check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.5"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+                - stage: targets
+                  name: "CART"
+                  install: skip
+                  script:
+                        - COVERAGE=0.5 ./gradlew -p ./monolithic/service/cart check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.5"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+                - stage: targets
+                  name: "USER"
+                  install: skip
+                  script:
+                        - COVERAGE=0.5 ./gradlew -p ./monolithic/service/user check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.5"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+                - stage: targets
+                  name: "ORDER"
+                  install: skip
+                  script:
+                        - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/order check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.5"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+                - stage: targets
+                  name: "REPO-CART"
+                  install: skip
+                  script:
+                        - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/cart check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.5"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+                - stage: targets
+                  name: "PRODUCT-USER"
+                  install: skip
+                  script:
+                        - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/product check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.5"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+                - stage: targets
+                  name: "REPO-USER"
+                  install: skip
+                  script:
+                        - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/user check
+                  after_success:
+                       set -x -v;
+                       set -e;
+                       if [ "${COVERAGE}" = "0.5"]; then
+                                echo 'WIP'
+                       else
+                       fi;
+
+

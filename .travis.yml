@@ -57,7 +57,7 @@ jobs:
                   name: "ORDER"
                   install: skip
                   script:
-                        - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/order check
+                        - COVERAGE=0.25 ./gradlew -p ./monolithic/repository/order check
                   after_success:
                        set -x -v;
                        set -e;
@@ -96,7 +96,7 @@ jobs:
                   name: "REPO-USER"
                   install: skip
                   script:
-                        - COVERAGE=0.5 ./gradlew -p ./monolithic/repository/user check
+                        - COVERAGE=0.25 ./gradlew -p ./monolithic/repository/user check
                   after_success:
                        set -x -v;
                        set -e;

@@ -6,6 +6,9 @@ os: linux
 dist: trusty
 jdk: oraclejdk8
 
+env:
+        - COVERAGRÎ
+
 stages:
   - targets
 
@@ -58,7 +61,7 @@ jobs:
                   after_success:
                        set -x -v;
                        set -e;
-                       if [ "${COVERAGE}" = "0.5"]; then
+                       if [ "${COVERAGE}" = "0.25"]; then
                                 echo 'WIP'
                        else
                        fi;
@@ -97,7 +100,7 @@ jobs:
                   after_success:
                        set -x -v;
                        set -e;
-                       if [ "${COVERAGE}" = "0.5"]; then
+                       if [ "${COVERAGE}" = "0.25"]; then
                                 echo 'WIP'
                        else
                        fi;

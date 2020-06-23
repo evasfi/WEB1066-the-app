@@ -2,12 +2,14 @@ sudo: enabled
 language: java
 install: skip
 
+jdk: oraclejdk8
+
 os: linux
 dist: trusty
 jdk: oraclejdk8
 
 env:
-        - COVERAGE=0.5
+        - COVERAGE=0.50
 
 install:
         - ./gradlew clean jar
@@ -23,7 +25,7 @@ before_deploy:
         - ./gradlew test jacocoTestCoverageVerification
 
 deploy:
-        provider: script:
+        provider: script
         script: echo 'WIP'
-        on:
+        on: 
                 all_branches: true

@@ -27,5 +27,4 @@ deploy:
         provider: script:
         script: echo 'WIP'
         on:
-                tags: true
                 all_branches: true

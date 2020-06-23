@@ -8,6 +8,9 @@ os: linux
 dist: trusty
 jdk: oraclejdk8
 
+env:
+         - COVERAGE=0.5
+
 install:
         - ./gradlew clean jar
 

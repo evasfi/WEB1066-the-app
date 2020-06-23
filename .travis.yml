@@ -1,8 +1,4 @@
-sudo: enabled
 language: java
-
-##os: linux
-##dist: trusty
 jdk: oraclejdk8
 
 install: 

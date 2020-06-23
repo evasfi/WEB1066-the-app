@@ -2,9 +2,9 @@ sudo: enabled
 language: java
 install: skip
 
-#os: linux
-#dist: trusty
-jdk: oraclejdk9
+os: linux
+dist: trusty
+jdk: oraclejdk8
 
 env:
         - COVERAGE=0.50

@@ -25,4 +25,5 @@ before_deplay:
         - COVERAGE=0.35./gradlew test jacocoTestCoverageVerification
 
 deploy:
-       - echo 'WIP'
+        provider: script
+        script: echo 'WIP'

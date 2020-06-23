@@ -1,16 +1,13 @@
 sudo: enabled
 language: java
-install: skip
 
-os: linux
-dist: trusty
+##os: linux
+##dist: trusty
 jdk: oraclejdk8
 
+install: 
+    - ./gradlew clean jar
+
 script:
-  - ./gradlew clean jar
-  - ./gradlew test
-  - ./gradlew jacocoTestReport
-  - /usr/bin/find . -name jacocoTestReport|xargs cat|awk -F',' '{print $3" "$4" "$5}'
-    #  - echo 'testing coming soon'
-    #- echo 'Using pull request rather than push from commandline!'
+    - echo 'testing coming soon'
  
